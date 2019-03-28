@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     func configureSegmentedControl() {
         let titleStrings = ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"]
         let titles: [NSAttributedString] = {
-            let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16), NSForegroundColorAttributeName: UIColor.white]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white]
             var titles = [NSAttributedString]()
             for titleString in titleStrings {
                 let title = NSAttributedString(string: titleString, attributes: attributes)
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
             return titles
         }()
         let selectedTitles: [NSAttributedString] = {
-            let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 16), NSForegroundColorAttributeName: UIColor.white]
+            let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), NSAttributedString.Key.foregroundColor: UIColor.white]
             var selectedTitles = [NSAttributedString]()
             for titleString in titleStrings {
                 let selectedTitle = NSAttributedString(string: titleString, attributes: attributes)
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: MMSegmentedControlDelegate {
-    func segmentedControl(_ segmentedControl: MMSegmentedControl, didSelectIndex selectedIndex: Int) {
+    @objc(MMSegmentedControl:didSelectIndex:) func MMSegmentedControl(_ segmentedControl: MMSegmentedControl, didSelectIndex selectedIndex: Int) {
         print("Did select index \(selectedIndex)")
         switch segmentedControl.style {
         case .text:
@@ -72,7 +72,7 @@ extension ViewController: MMSegmentedControlDelegate {
         }
     }
     
-    func segmentedControl(_ segmentedControl: MMSegmentedControl, didLongPressIndex longPressIndex: Int) {
+    @objc(MMSegmentedControl:didLongPressIndex:) func MMSegmentedControl(_ segmentedControl: MMSegmentedControl, didLongPressIndex longPressIndex: Int) {
         print("Did long press index \(longPressIndex)")
     }
 }

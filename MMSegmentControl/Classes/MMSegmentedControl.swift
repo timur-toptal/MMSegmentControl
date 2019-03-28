@@ -377,7 +377,7 @@ extension MMSegmentedControl: UIGestureRecognizerDelegate {
         return false
     }
 
-    func MMSegmentedControlLongPressed(_ gesture: UIGestureRecognizer) {
+    @objc func MMSegmentedControlLongPressed(_ gesture: UIGestureRecognizer) {
         switch gesture.state {
         case .possible:
             print("LongPressGesture Possible!")
@@ -402,6 +402,8 @@ extension MMSegmentedControl: UIGestureRecognizerDelegate {
             print("LongPressGesture Failed!")
             isLongPressActivated = false
             break
+        @unknown default:
+            fatalError("Unknown case")
         }
     }
 
@@ -496,11 +498,11 @@ public extension MMSegmentedControl {
             let titleLayer: CATextLayer = {
                 let titleLayer = CATextLayer()
                 titleLayer.frame = titleRect
-                titleLayer.alignmentMode = kCAAlignmentCenter
+                titleLayer.alignmentMode = CATextLayerAlignmentMode.center
                 if #available(iOS 10.0, *) {
-                    titleLayer.truncationMode = kCATruncationNone
+                    titleLayer.truncationMode = CATextLayerTruncationMode.none
                 } else {
-                    titleLayer.truncationMode = kCATruncationEnd
+                    titleLayer.truncationMode = CATextLayerTruncationMode.end
                 }
                 titleLayer.string = titleString
                 titleLayer.contentsScale = UIScreen.main.scale

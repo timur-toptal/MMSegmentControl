@@ -1,0 +1,16 @@
+PODS:
+  - MMSegmentControl (0.1.0)
+
+DEPENDENCIES:
+  - MMSegmentControl (from `/Users/timuber/Desktop/Test`)
+
+EXTERNAL SOURCES:
+  MMSegmentControl:
+    :path: "/Users/timuber/Desktop/Test"
+
+SPEC CHECKSUMS:
+  MMSegmentControl: df4d08c61870c7c7e7cb24ad62c8888cdd1a0e8a
+
+PODFILE CHECKSUM: 9205121c35f440cd760947514a2fe5da953b877f
+
+COCOAPODS: 1.5.3
