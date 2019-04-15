@@ -18,6 +18,13 @@ open class MMSegmentedControl: UIControl {
             setNeedsDisplay()
         }
     }
+    
+    open var isRTL: Bool = false {
+        didSet {
+            self.transform = CGAffineTransform(scaleX: isRTL ? -1 : 1, y: 1)
+            setNeedsDisplay()
+        }
+    }
 
     /// Only available in dynamic layout policy
     open var segmentSpacing: CGFloat = 0
@@ -506,6 +513,11 @@ public extension MMSegmentedControl {
                 }
                 titleLayer.string = titleString
                 titleLayer.contentsScale = UIScreen.main.scale
+                
+                if isRTL {
+                    titleLayer.transform = CATransform3DMakeScale(-1, 1, 1)
+                }
+                
                 return titleLayer
             }()
 
